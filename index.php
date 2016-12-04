@@ -54,7 +54,7 @@ $errors2 = array();
 			$row = mysqli_fetch_assoc($user);
 			if(isset($row)){
 				$_SESSION['logged_user'] = $row;
-				header('Location: content.php');
+				header('Location: option.php');
 			}else{
 				 $errors2[] = "Вы ошиблись при заполнении формы !";
 			}

@@ -20,7 +20,7 @@
                 success : function(result) {
                     // you can see the result from the console
                     // tab of the developer tools
-					$(".result").css("dispaly","none");
+					$(".result").show;
 					$(".result").append("<div>Calibrarea sus:" + result.calibrarea_sus + " \t\n Calibrarea jos:" + result.calibrarea_jos+"</div>")
                 },
                 error: function(xhr, resp, text) {

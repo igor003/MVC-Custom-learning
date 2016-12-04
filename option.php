@@ -52,7 +52,7 @@ $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos
 		 AND tt.terminal = '".$data_option['terminal']."'" ;
 $calibrarea = mysqli_query($mydb,$query);
 $b = mysqli_fetch_assoc($calibrarea);
-var_dump($b);
+/*var_dump($b);*/
 
 ?>
 <!DOCTYPE html>
@@ -63,30 +63,16 @@ var_dump($b);
 	<?php
 	require"heders.php";
 	?>
-	<style>
-		form{
-			width:200px;
-			margin:auto;
-			text-align:center;
-		}
-	
-		
-	
-	</style>
-
 	<script>
-		function SlideDown (object){
-			$(object).css("dispaly","block");
-		};
-		function SlideUP (object){
-			$(object).slideUp;
-		}
+		$(".btn-primary").on('click',function(){
+			$(".result_2").show;
+		})
 	</script>
-
 </head>
 <body>
-<form action="" method="post">
-<label for="terminal">Terminal</label>
+<div class="form">
+	<form action="" method="post">
+	<label for="terminal">Terminal</label>
 	<select name="terminal" id="" value="terminal">
 	<option value="" selected disabled></option>
 		<?php
@@ -115,31 +101,29 @@ var_dump($b);
 	</select><br>
 	<label for="sez">Sez</label>
 	<select name="sez" id="">
-<!--	<option value="" selected></option>-->
 		<?php
 			foreach($return3 as $resault){
 				echo"<option value=".$resault.">".$resault."</option>";
 			}
 		?>
 	</select><br>
-	<button class="btn btn-primary " type="submit">Отправить</button>
+	<button class="btn btn-primary " type="submit" name="submit_option">Отправить</button>
 	
 </form>
+</div>
 <?php
 	if($b){
 ?>
 <div class="result">
-
-	<script>
-		SlideUP("result");
-	</script>
-
 	Calibrarea sus: <?=$b['calibrarea_sus']?>
-	Calibrarea sus: <?=$b['calibrarea_jos']?>
+	Calibrarea jos: <?=$b['calibrarea_jos']?>
 </div>
 <?php
 	}else{
 ?>
+	<div class="result_2">
+		Форма заполнена неверно!!!
+	</div>
 <?php
 	}
 ?>
