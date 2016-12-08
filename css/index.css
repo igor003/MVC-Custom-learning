@@ -1,4 +1,8 @@
 
+a:hover{
+	text-decoration: none;
+	color:white;
+}
 .buttons{
 	margin:auto;
 	height:100px;
@@ -160,3 +164,8 @@
 	font-size: 2em;
 	line-height:40px;
 }
+.form_add_db{
+
+	text-align:center;
+}
+f

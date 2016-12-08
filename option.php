@@ -65,6 +65,16 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</script>
 </head>
 <body>
+<a href="/list.php">
+	<button class="btn btn-success">
+		 Пользователи
+	</button>
+</a>
+<a href="/database_table.php">
+	<button class="btn btn-info">
+		База данных
+	</button>
+</a>
 <div class="form">
 	<form action="" method="post">
 	<label for="terminal">Terminal</label>
