@@ -1,5 +1,5 @@
 <?php
-$mydb = mysqli_connect('localhost', 'root','','prilojuha');
+$mydb = mysqli_connect('localhost', 'root','','sammyCablagi');
 $query = "SELECT * FROM `users`";
 $user = mysqli_query($mydb,$query);
 $return= array();
@@ -61,6 +61,7 @@ function select($id,$row2,$row3){
 </head>
 <body>
 <a href="/insert.php"><button class="btn btn-success">Добавить пользователя</button></a>
+<a href="/option.php"<button class="btn btn-warning">На главную</button></a>
  	<div class="table-responsive"> 
     <table class="table table-bordered">
 		<caption><h1>Таблица данных о пользователях</h1></caption>

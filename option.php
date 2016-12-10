@@ -9,25 +9,31 @@ while($row = mysqli_fetch_assoc($sql)){
 asort($return);
 
 
-$query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes`;";
+$query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes` ORDER BY nr_mini;";
 $sql1 = mysqli_query($mydb,$query1);
 $return1 = array();
 while($row1 = mysqli_fetch_assoc($sql1)){
  	$return1[] = $row1['nr_mini'];
 }	
-asort($return1, SORT_NUMERIC );
+
 	
 
-
-
+<<<<<<< HEAD
 $query2 = "SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY nr_presetei ";
 $sql2 = mysqli_query($mydb,$query2);
+=======
+ $query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`;";
+$sql2 = mysqli_query($mydb,$query2);;
+>>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
- 	$return2[] = $row2['nr_presetei'];
+ 	 $return2[]= $row2['nr_presetei'];
 }
+<<<<<<< HEAD
 //asort($return2, SORT_NUMERIC );
 var_dump($return2);
+=======
+>>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 
 
 
@@ -40,6 +46,7 @@ while($row3 = mysqli_fetch_assoc($sql3)){
 asort($return3);
 
 
+
 $data_option = $_POST;
 $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos 
          FROM `terminal_proprietes` tp INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
@@ -49,7 +56,7 @@ $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos
 		 AND tt.terminal = '".$data_option['terminal']."'" ;
 $calibrarea = mysqli_query($mydb,$query);
 $b = mysqli_fetch_assoc($calibrarea);
-/*var_dump($b);*/
+
 
 ?>
 <!DOCTYPE html>
@@ -67,6 +74,16 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</script>
 </head>
 <body>
+<a href="/list.php">
+	<button class="btn btn-success">
+		 Пользователи
+	</button>
+</a>
+<a href="/database_table.php">
+	<button class="btn btn-info">
+		База данных
+	</button>
+</a>
 <div class="form">
 	<form action="" method="post">
 	<label for="terminal">Terminal</label>
@@ -80,7 +97,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</select><br>
 	<label for="mini">Mini</label>
 	<select name="mini" id="">
-	<option value="" selected disabled></option>
+	<option value="" selected ></option>
 		<?php
 			foreach($return1 as $resault){
 				echo"<option value=".$resault.">".$resault."</option>";
@@ -98,6 +115,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</select><br>
 	<label for="sez">Sez</label>
 	<select name="sez" id="">
+		<option value="" selected disabled></option>
 		<?php
 			foreach($return3 as $resault){
 				echo"<option value=".$resault.">".$resault."</option>";
