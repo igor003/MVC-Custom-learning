@@ -2,7 +2,6 @@
 require 'my_db.php';
 $query = "SELECT DISTINCT `Terminal` FROM `table_terminal`;";
 $sql = mysqli_query($mydb,$query );
-$a = mysqli_fetch_assoc($sql);
 $return= array();
 while($row = mysqli_fetch_assoc($sql)){
 	$return[] = $row['Terminal'];
@@ -12,7 +11,6 @@ asort($return);
 
 $query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes`;";
 $sql1 = mysqli_query($mydb,$query1);
-$a1 = mysqli_fetch_assoc($sql1);
 $return1 = array();
 while($row1 = mysqli_fetch_assoc($sql1)){
  	$return1[] = $row1['nr_mini'];
@@ -22,20 +20,19 @@ asort($return1, SORT_NUMERIC );
 
 
 
-$query2 = "SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes`;";
+$query2 = "SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY nr_presetei ";
 $sql2 = mysqli_query($mydb,$query2);
-$a2 = mysqli_fetch_assoc($sql2);
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
  	$return2[] = $row2['nr_presetei'];
 }
-asort($return2, SORT_NUMERIC );
+//asort($return2, SORT_NUMERIC );
+var_dump($return2);
 
 
 
 $query3 = "SELECT DISTINCT `sez` FROM `terminal_proprietes`;";
 $sql3 = mysqli_query($mydb,$query3);
-$a3 = mysqli_fetch_assoc($sql3);
 $return3 = array();
 while($row3 = mysqli_fetch_assoc($sql3)){
 	$return3[] = $row3['sez'];
