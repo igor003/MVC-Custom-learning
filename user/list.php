@@ -1,5 +1,5 @@
 <?php
-$mydb = mysqli_connect('localhost', 'root','','sammyCablagi');
+$mydb = mysqli_connect('localhost', 'root','','prilojuha');
 $query = "SELECT * FROM `users`";
 $user = mysqli_query($mydb,$query);
 $return= array();
@@ -12,7 +12,7 @@ function select($id,$row2,$row3){
 			<td class='id'>".$id."</td>
 			<td class='login'>".$row2."</td>
 			<td class='password'>".$row3."</td>
-			<td class='action'><a href='/delete.php?id=".$id."'><button class='btn btn-danger del'>Delete</button></a> <a href='/update.php'><a href = '/edit.php?id=".$id."'><button class='btn btn-primary'>Update</button></a></td>
+			<td class='action'><a href='/user/delete.php?id=".$id."'><button class='btn btn-danger del'>Delete</button></a> <a href='/user/update.php'><a href = '/user/edit.php?id=".$id."'><button class='btn btn-primary'>Update</button></a></td>
 		</tr>
 	";
 	
@@ -25,17 +25,14 @@ function select($id,$row2,$row3){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<?php
-	require"heders.php";
+	require"../heders.php";
+
 	?>
 	<style>
-		tr{
-			
-
-		}
-
 		.action{
 			width:200px;
 			text-align: center;
@@ -58,10 +55,11 @@ function select($id,$row2,$row3){
 		}
 		
 	</style>
+	<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-<a href="/insert.php"><button class="btn btn-success">Добавить пользователя</button></a>
-<a href="/option.php"<button class="btn btn-warning">На главную</button></a>
+<a href="insert.php"><button class="btn btn-success">Добавить пользователя</button></a>
+<a href="../option.php"<button class="btn btn-warning">На главную</button></a>
  	<div class="table-responsive"> 
     <table class="table table-bordered">
 		<caption><h1>Таблица данных о пользователях</h1></caption>

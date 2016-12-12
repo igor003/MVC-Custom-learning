@@ -1,5 +1,5 @@
 <?php
-require 'my_db.php';
+require '/my_db.php';
 $query = "SELECT DISTINCT `Terminal` FROM `table_terminal`;";
 $sql = mysqli_query($mydb,$query );
 $return= array();
@@ -18,22 +18,13 @@ while($row1 = mysqli_fetch_assoc($sql1)){
 
 	
 
-<<<<<<< HEAD
-$query2 = "SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY nr_presetei ";
-$sql2 = mysqli_query($mydb,$query2);
-=======
+
  $query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`;";
 $sql2 = mysqli_query($mydb,$query2);;
->>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
  	 $return2[]= $row2['nr_presetei'];
 }
-<<<<<<< HEAD
-//asort($return2, SORT_NUMERIC );
-var_dump($return2);
-=======
->>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 
 
 
@@ -65,7 +56,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	<meta charset="UTF-8">
 	<title>Document</title>'
 	<?php
-	require"heders.php";
+	require"/heders.php";
 	?>
 	<script>
 		$(".btn-primary").on('click',function(){
@@ -74,7 +65,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</script>
 </head>
 <body>
-<a href="/list.php">
+<a href="user/list.php">
 	<button class="btn btn-success">
 		 Пользователи
 	</button>

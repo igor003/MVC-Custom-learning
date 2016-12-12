@@ -1,5 +1,5 @@
 <?php
-	require 'my_db.php';
+	require '../my_db.php';
 ?>
    <!DOCTYPE html>
    <html lang="en">
@@ -7,7 +7,7 @@
 		<meta charset="UTF-8">
 		<title>Document</title>
 <?php
-	require"heders.php"; 
+	require"../heders.php";
 	$data = $_POST;
 	var_dump($data);
 	if(isset($data["btn_insert_submit"])){
@@ -32,17 +32,28 @@
 	}
 ?>
 
+		   <link rel="stylesheet" href="../css/index.css">
+		   <script src="/libs/jquery-1.12.3.js"></script>
    </head>
    <body>
    <div class="form_2">
 		<form action="" method="post">
-			<label for="login">Введите логин </label>
-			<input type="text" name="login" ><br><br>
-			<label for="password">Введите пароль</label>
-			<input type="text" name="password"><br><br>
+			<div class="form-group">
+				<label for="usr">Введите логин</label>
+				<input name="login" type="text" class="form-control" id="usr">
+			</div>
+<!--			<label for="login">Введите логин </label>-->
+<!--			<input type="text" name="login" ><br><br>-->
+			<div class="form-group">
+				<label for="usr">Введите пароль</label>
+				<input name="password" type="text" class="form-control" id="usr">
+			</div>
+<!--			<label for="password">Введите пароль</label>-->
+<!--			<input type="text" name="password"><br><br>-->
 			<button name="btn_insert_submit" class="btn btn-success" type="submit">Зарегистрироваться</button>
 		</form>
-   <a href="/list.php"><button class="btn btn-info">Таблица пользователей</button></a>
+	   <br>
+   <a href="/user/list.php"><button class="btn btn-info">Таблица пользователей</button></a>
     </div>
 	
    </body>

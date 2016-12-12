@@ -1,6 +1,6 @@
 <?php
 require 'my_db.php';
-$query = "SELECT DISTINCT `Terminal` FROM `table_terminal`;";
+$query = "SELECT DISTINCT `Terminal` FROM `table_terminal`";
 $sql = mysqli_query($mydb,$query );
 $return= array();
 while($row = mysqli_fetch_assoc($sql)){
@@ -9,7 +9,7 @@ while($row = mysqli_fetch_assoc($sql)){
 asort($return);
 
 
-$query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`;";
+$query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`";
 $sql2 = mysqli_query($mydb,$query2);;
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
@@ -17,7 +17,7 @@ while($row2 = mysqli_fetch_assoc($sql2)){
 }
 
 
-$query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes` ORDER BY nr_mini;";
+$query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes` ORDER BY nr_mini";
 $sql1 = mysqli_query($mydb,$query1);
 $a1 = mysqli_fetch_assoc($sql1);
 $return1 = array();
@@ -26,7 +26,7 @@ while($row1 = mysqli_fetch_assoc($sql1)){
 }	
 
 
-$query3 = "SELECT DISTINCT `sez` FROM `terminal_proprietes`;";
+$query3 = "SELECT DISTINCT `sez` FROM `terminal_proprietes`";
 $sql3 = mysqli_query($mydb,$query3);
 $return3 = array();
 while($row3 = mysqli_fetch_assoc($sql3)){
@@ -50,12 +50,12 @@ asort($return3);
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="#">Add terminal</a></li>
+        <li class=""><a href="/add_terminal/add_terminal_to_db.php">Add terminal</a></li>
         <li><a href="#">Add nr presetei</a></li>
         <li><a href="">Add nr mini</a></li>
         <li><a href="">Add sez</a></li>
-       </ul>
-     </div>
+	  </ul>
+	</div>
   </div>
 </nav>
 
