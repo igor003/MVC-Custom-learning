@@ -11,7 +11,6 @@ asort($return);
 
 $query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes` ORDER BY nr_mini;";
 $sql1 = mysqli_query($mydb,$query1);
-$a1 = mysqli_fetch_assoc($sql1);
 $return1 = array();
 while($row1 = mysqli_fetch_assoc($sql1)){
  	$return1[] = $row1['nr_mini'];
@@ -19,12 +18,22 @@ while($row1 = mysqli_fetch_assoc($sql1)){
 
 	
 
+<<<<<<< HEAD
+$query2 = "SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY nr_presetei ";
+$sql2 = mysqli_query($mydb,$query2);
+=======
  $query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`;";
 $sql2 = mysqli_query($mydb,$query2);;
+>>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
  	 $return2[]= $row2['nr_presetei'];
 }
+<<<<<<< HEAD
+//asort($return2, SORT_NUMERIC );
+var_dump($return2);
+=======
+>>>>>>> 34ad12399234cc3f5aac5ed3a53d4ae12643b7ec
 
 
 

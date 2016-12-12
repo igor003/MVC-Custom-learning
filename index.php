@@ -25,8 +25,7 @@ $errors2 = array();
 				$errors[] =" Пользователь с таким логином уже зарегистрирован !";
 			}else{
 				mysqli_query($mydb,
-				" INSERT INTO `users` (`login`,`password`)
-				VALUES ('".$data['log_1'] ."','".$data['pass_1'] ."')" );
+				" INSERT INTO `users` (`login`,`password`) VALUES ('".$data['log_1'] ."','".$data['pass_1'] ."')" );
 				$errors2[] = "Вы успешно зарегистрированы ";
 			}
 		}else{
