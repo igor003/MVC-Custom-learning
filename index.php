@@ -71,7 +71,8 @@ $errors2 = array();
 
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<?php require'heders.php';?>
+	<?php require'heders.php'?>
+
 	<script>
 		$(function(){
             $(".btn_1 ").on("click", function(){
@@ -165,22 +166,38 @@ $errors2 = array();
 		<button class=" btn btn-primary btn_2">Войти</button>
 	</div>
 	<div class="form_reg">
-		<form action="" method="post">
-			<label for="log_1">Введите логин</label>
-			<input type="text" name="log_1"><br>
-			<label for="pass_1">Введите пароль</label>
-			<input type="password" name="pass_1"><br>
-			<button class=" btn btn-success " type="submit" name="btn_reg">Отправить</button>
-		</form>
+		<div class="col-xs-4 col-xs-offset-4">
+			<form action="" method="post">
+				<div class="form-group">
+  					<label for="usr">Введите логин</label>
+ 					 <input type="text" name="log_1"class="form-control" id="usr">
+				</div>
+				<div class="form-group">
+  					<label for="usr">Введите пароль</label>
+ 					 <input type="text" name="pass_1" class="form-control" id="usr">
+				</div>	
+				<button class=" btn btn-success " type="submit" name="btn_reg">Отправить</button>
+			</form>
+		</div>
 	</div>
 	<div class="form_log">
-		<form action="" method="post">
-			<label for="log_2">Введите логин</label>
-			<input type="text" name="log_2"><br>
-			<label for="pass_2">Введите пароль</label>
-			<input type="password" name="pass_2"><br>
-			<button class=" btn btn-primary " type="submit" name="btn_log">Войти в аккаунт</button>
-		</form>
+		<div class="col-xs-4 col-xs-offset-4">
+			<form action="" method="post">
+				<div class="form-group">
+					<label for="usr">Введите логин</label>
+					 <input type="text" name="log_2" class="form-control" id="usr">
+				</div>	
+				<div class="form-group">
+					<label for="usr">Введите пароль</label>
+					 <input type="text" name="pass_2" class="form-control" id="usr">
+				</div>	
+				<!-- <label for="log_2">Введите логин</label>
+				<input type="text" name="log_2"><br>
+				<label for="pass_2">Введите пароль</label>
+				<input type="password" name="pass_2"><br> -->
+				<button class=" btn btn-primary " type="submit" name="btn_log">Войти в аккаунт</button>
+			</form>
+		</div>
 	</div>
    
 </body>

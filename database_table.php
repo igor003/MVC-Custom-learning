@@ -24,7 +24,13 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 			<td class='sez'>".$row5."</td>
 			<td class='calibrarea_sus'>".$row6."</td>
 			<td class='Calibrarea_jos'>".$row7."</td>
-			<td class='action'><a href='update_db.php?id =".$id."'><button class='btn btn-info'>Update</button></a><a href='delete_db.php?id=".$id."'><button class='btn btn-warning'>Delete</button></a></td>
+			<td class='action'>
+				<a href='update_db.php?id =".$id."'>
+			        <button class='btn btn-info'>Update</button>
+               </a><a href='delete_db.php?id=".$id."'>
+			        <button class='btn btn-warning'>Delete</button>
+			    </a>
+			</td>
 		</tr>
 	";
 	

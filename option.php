@@ -77,44 +77,53 @@ $b = mysqli_fetch_assoc($calibrarea);
 </a>
 <div class="form">
 	<form action="" method="post">
-	<label for="terminal">Terminal</label>
-	<select name="terminal" id="" value="terminal">
-	<option value="" selected disabled></option>
-		<?php
-			foreach($return as $resault){
-				echo"<option value=".$resault.">".$resault."</option>";
-			}
-		?>
-	</select><br>
-	<label for="mini">Mini</label>
-	<select name="mini" id="">
-	<option value="" selected ></option>
-		<?php
-			foreach($return1 as $resault){
-				echo"<option value=".$resault.">".$resault."</option>";
-			}
-		?>
-	</select><br>
-	<label for="nr_presetei">Preseta nr</label>
-	<select name="nr_presetei" id="">
-	<option value="" selected disabled></option>
-		<?php
-			foreach($return2 as $resault){
-				echo"<option value=".$resault.">".$resault."</option>";
-			}
-		?>
-	</select><br>
-	<label for="sez">Sez</label>
-	<select name="sez" id="">
-		<option value="" selected disabled></option>
-		<?php
-			foreach($return3 as $resault){
-				echo"<option value=".$resault.">".$resault."</option>";
-			}
-		?>
-	</select><br>
-	<button class="btn btn-primary " type="submit" name="submit_option">Отправить</button>
+		<div class="form-group">
+			<label for="sel1">Terminal:</label>
+		    <select name="terminal"value="terminal" class="form-control" id="sel1">
+		    	<option value="" selected disabled ></option>
+			    <?php
+					foreach($return as $resault){
+						echo"<option value=".$resault.">".$resault."</option>";
+					}
+				?>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="sel2">Mini:</label>
+		    <select name="mini"class="form-control" id="sel2">
+		    	<option value="" selected disabled ></option>
+			    <?php
+					foreach($return1 as $resault){
+						echo"<option value=".$resault.">".$resault."</option>";
+					}
+				?>
+			</select>
+		</div>
 	
+		<div class="form-group">
+			<label for="sel3">Preseta nr:</label>
+		    <select name="nr_presetei"class="form-control" id="sel3">
+		    	<option value="" selected disabled ></option>
+			    <?php
+					foreach($return2 as $resault){
+						echo"<option value=".$resault.">".$resault."</option>";
+					}
+				?>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="sel4">Sez:</label>
+		    <select name="sez"class="form-control" id="sel4">
+		    	<option value="" selected disabled ></option>
+			    <?php
+					foreach($return3 as $resault){
+						echo"<option value=".$resault.">".$resault."</option>";
+					}
+				?>
+			</select>
+		</div>
+	<button class="btn btn-primary " type="submit" name="submit_option">Отправить</button>
 </form>
 </div>
 <?php
