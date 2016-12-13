@@ -1,5 +1,5 @@
 <?php
-require 'my_db.php';
+require '/my_db.php';
 $query = "SELECT DISTINCT `Terminal` FROM `table_terminal`;";
 $sql = mysqli_query($mydb,$query );
 $return= array();
@@ -9,7 +9,7 @@ while($row = mysqli_fetch_assoc($sql)){
 asort($return);
 
 
-$query1 = "SELECT DISTINCT `nr_mini` FROM `terminal_proprietes` ORDER BY nr_mini;";
+$query1 = "SELECT DISTINCT `nr_mini` FROM `table_nr_mini` ORDER BY nr_mini;";
 $sql1 = mysqli_query($mydb,$query1);
 $return1 = array();
 while($row1 = mysqli_fetch_assoc($sql1)){
@@ -17,13 +17,15 @@ while($row1 = mysqli_fetch_assoc($sql1)){
 }	
 
 
- $query2 ="SELECT DISTINCT `nr_presetei` FROM `terminal_proprietes` ORDER BY `nr_presetei`;";
+
+
+
+ $query2 ="SELECT DISTINCT `nr_presetei` FROM `table_nr_presetei` ORDER BY `nr_presetei`;";
 $sql2 = mysqli_query($mydb,$query2);;
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
  	 $return2[]= $row2['nr_presetei'];
 }
-
 
 
 
@@ -39,11 +41,13 @@ asort($return3);
 
 $data_option = $_POST;
 $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos 
-         FROM `terminal_proprietes` tp INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
-		 WHERE tp.nr_presetei = '".$data_option['nr_presetei']."' 
-		 AND tp.nr_mini ='".$data_option['mini']."' 
-		 AND tp.sez = '".$data_option['sez']."' 
-		 AND tt.terminal = '".$data_option['terminal']."'" ;
+         FROM `terminal_proprietes` tp  INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
+         							    INNER JOIN table_nr_presetei tn ON tp.id_nr_presetei = tn.id
+         							    INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id                 
+										WHERE tn.nr_presetei = '".$data_option['nr_presetei']."' 
+										AND tm.nr_mini ='".$data_option['mini']."' 
+										AND tp.sez = '".$data_option['sez']."' 
+										AND tt.terminal = '".$data_option['terminal']."'" ;
 $calibrarea = mysqli_query($mydb,$query);
 $b = mysqli_fetch_assoc($calibrarea);
 
@@ -55,7 +59,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	<meta charset="UTF-8">
 	<title>Document</title>'
 	<?php
-	require"heders.php";
+	require"/heders.php";
 	?>
 	<script>
 		$(".btn-primary").on('click',function(){
@@ -64,7 +68,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</script>
 </head>
 <body>
-<a href="/list.php">
+<a href="user/list.php">
 	<button class="btn btn-success">
 		 Пользователи
 	</button>
