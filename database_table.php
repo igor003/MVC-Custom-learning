@@ -4,11 +4,13 @@ $query = "SELECT *
           FROM `terminal_proprietes` tp 
           INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
           INNER JOIN table_nr_presetei tn ON tp.id_nr_presetei = tn.id 
-          INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id";
+          INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id
+          INNER JOIN table_sez ts ON tp.id_sez = ts.id
+          ";
 $user = mysqli_query($mydb,$query);
 $return= array();
 while($row = mysqli_fetch_assoc($user)){	
-	$return[] = select($row['id'],
+	$return[] = select($row['id_primary'],
 		               $row['Terminal'],
 		               $row['nr_presetei'],
 		               $row['nr_mini'],

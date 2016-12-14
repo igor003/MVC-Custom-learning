@@ -10,7 +10,7 @@ asort($return);
 
 
 $query2 ="SELECT DISTINCT `nr_presetei` FROM `table_nr_presetei` ORDER BY `nr_presetei`";
-$sql2 = mysqli_query($mydb,$query2);;
+$sql2 = mysqli_query($mydb,$query2);
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
  	 $return2[]= $row2['nr_presetei'];
@@ -25,7 +25,7 @@ while($row1 = mysqli_fetch_assoc($sql1)){
 }	
 
 
-$query3 = "SELECT DISTINCT `sez` FROM `terminal_proprietes`";
+$query3 = "SELECT DISTINCT `sez` FROM `table_sez`";
 $sql3 = mysqli_query($mydb,$query3);
 $return3 = array();
 while($row3 = mysqli_fetch_assoc($sql3)){
@@ -52,7 +52,7 @@ asort($return3);
         <li class=""><a href="/add_terminal/add_terminal_to_db.php">Add terminal</a></li>
         <li><a href="/add_nr_preseta/add_nr_presetei_to_db.php">Add nr presetei</a></li>
         <li><a href="/add_nr_mini/add_nr_mini_to_db.php">Add nr mini</a></li>
-        <li><a href="">Add sez</a></li>
+        <li><a href="/add_sez/add_sez_to_db.php">Add sez</a></li>
 	  </ul>
 	</div>
   </div>
@@ -61,10 +61,10 @@ asort($return3);
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 ">
-				<form action="" method="post">
+				<form action="insert_in_db_table.php" method="post">
 					<div class="form-group">
 						<label for="sel1">Terminal:</label>
-					    <select class="form-control" id="sel1">
+					    <select name="terminal" class="form-control" id="sel1">
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return as $resault){
@@ -75,7 +75,7 @@ asort($return3);
 					</div>
 					<div class="form-group">
 						<label for="sel1">Preseta:</label>
-					    <select class="form-control" id="sel1">
+					    <select name="preseta" class="form-control" id="sel1">
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return2 as $resault){
@@ -86,7 +86,7 @@ asort($return3);
 					</div>
 					<div class="form-group">
 						<label for="sel1">Mini:</label>
-					    <select class="form-control" id="sel1">
+					    <select name="mini" class="form-control" id="sel1">
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return1 as $resault){
@@ -97,7 +97,7 @@ asort($return3);
 					</div>
 					<div class="form-group">
 						<label for="sel1">Sez:</label>
-					    <select class="form-control" id="sel1">
+					    <select name="sez" class="form-control" id="sel1">
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return3 as $resault){
@@ -108,11 +108,11 @@ asort($return3);
 					</div>
 					<div class="form-group">
 	  					<label for="usr">Calibrarea sus:</label>
-	 					 <input type="text" class="form-control" id="usr">
+	 					 <input name="calibrarea_sus" type="text" class="form-control" id="usr">
 					</div>
 					<div class="form-group">
 	  					<label for="usr">Calibrarea jos:</label>
-	 					 <input type="text" class="form-control" id="usr">
+	 					 <input name="calibrarea_jos" type="text" class="form-control" id="usr">
 					</div>
 					<input class="btn  btn-warning" type="submit">
 				</form>
