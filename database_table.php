@@ -7,8 +7,9 @@ $query = "SELECT *
           INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id";
 $user = mysqli_query($mydb,$query);
 $return= array();
+
 while($row = mysqli_fetch_assoc($user)){	
-	$return[] = select($row['id'],
+	$return[] = select($row['id_primary'],
 		               $row['Terminal'],
 		               $row['nr_presetei'],
 		               $row['nr_mini'],
@@ -16,6 +17,7 @@ while($row = mysqli_fetch_assoc($user)){
 		               $row['calibrarea_sus'],
 	                   $row['calibrarea_jos']);
 }
+
 function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 	return "
 		<tr>
@@ -101,7 +103,7 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 				echo $resault;
 			}
 		?>
-		
+		<?=$resault['id']?>
 	</table>
 	</div>
 </body>
