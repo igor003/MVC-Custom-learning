@@ -29,7 +29,7 @@ while($row2 = mysqli_fetch_assoc($sql2)){
 
 
 
-$query3 = "SELECT DISTINCT `sez` FROM `terminal_proprietes`;";
+$query3 = "SELECT DISTINCT `sez` FROM `table_sez`;";
 $sql3 = mysqli_query($mydb,$query3);
 $return3 = array();
 while($row3 = mysqli_fetch_assoc($sql3)){
@@ -40,17 +40,18 @@ asort($return3);
 
 
 $data_option = $_POST;
+
 $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos 
          FROM `terminal_proprietes` tp  INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
          							    INNER JOIN table_nr_presetei tn ON tp.id_nr_presetei = tn.id
-         							    INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id                 
+         							    INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id 
+         							    INNER JOIN table_sez ts ON tp.id_sez = ts.id
 										WHERE tn.nr_presetei = '".$data_option['nr_presetei']."' 
 										AND tm.nr_mini ='".$data_option['mini']."' 
-										AND tp.sez = '".$data_option['sez']."' 
+										AND ts.sez = '".$data_option['sez']."' 
 										AND tt.terminal = '".$data_option['terminal']."'" ;
 $calibrarea = mysqli_query($mydb,$query);
 $b = mysqli_fetch_assoc($calibrarea);
-
 
 ?>
 <!DOCTYPE html>

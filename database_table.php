@@ -4,7 +4,9 @@ $query = "SELECT *
           FROM `terminal_proprietes` tp 
           INNER JOIN table_terminal tt ON tp.id_terminal = tt.id 
           INNER JOIN table_nr_presetei tn ON tp.id_nr_presetei = tn.id 
-          INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id";
+          INNER JOIN table_nr_mini tm ON tp.id_nr_mini = tm.id
+          INNER JOIN table_sez ts ON tp.id_sez = ts.id
+          ";
 $user = mysqli_query($mydb,$query);
 $return= array();
 
@@ -29,7 +31,7 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 			<td class='calibrarea_sus'>".$row6."</td>
 			<td class='Calibrarea_jos'>".$row7."</td>
 			<td class='action'>
-				<a href='update_db.php?id =".$id."'>
+				<a href='edit_database_table.php?id =".$id."'>
 			        <button class='btn btn-info'>Update</button>
                </a><a href='delete_db.php?id=".$id."'>
 			        <button class='btn btn-warning'>Delete</button>
@@ -103,7 +105,7 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 				echo $resault;
 			}
 		?>
-		<?=$resault['id']?>
+		
 	</table>
 	</div>
 </body>

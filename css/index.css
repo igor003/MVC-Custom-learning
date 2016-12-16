@@ -155,7 +155,7 @@ a:hover{
 	line-height:40px;
 }
 .result_2{
-	display: none;
+	/*display: none;*/
 	position:absolute;
 	margin-top:20px;
 	height:40px;
