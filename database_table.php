@@ -55,10 +55,6 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 	require"heders.php";
 	?>
 	<style>
-		tr{
-			
-
-		}
 
 		.action{
 			width:200px;

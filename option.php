@@ -69,7 +69,7 @@ $b = mysqli_fetch_assoc($calibrarea);
 	</script>
 </head>
 <body>
-<a href="user/list.php">
+<a href="../user/list.php">
 	<button class="btn btn-success">
 		 Пользователи
 	</button>
@@ -131,20 +131,22 @@ $b = mysqli_fetch_assoc($calibrarea);
 </form>
 </div>
 <?php
-	if($b){
-?>
-<div class="result">
-	Calibrarea sus: <?=$b['calibrarea_sus']?>
-	Calibrarea jos: <?=$b['calibrarea_jos']?>
-</div>
-<?php
-	}else{
-?>
-	<div class="result_2">
-		Форма заполнена неверно!!!
-	</div>
-<?php
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+	if ($b) {
+		?>
+		<div class="result">
+			Calibrarea sus: <?= $b['calibrarea_sus'] ?>
+			Calibrarea jos: <?= $b['calibrarea_jos'] ?>
+		</div>
+		<?php
+	} else {
+		?>
+		<div class="result_2">
+			Форма заполнена неверно!!!
+		</div>
+		<?php
 	}
+}
 ?>
 </body>
 </html>

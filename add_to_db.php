@@ -1,35 +1,35 @@
 <?php
 require 'my_db.php';
-$query = "SELECT DISTINCT `Terminal` FROM `table_terminal`";
+$query = "SELECT  * FROM `table_terminal`";
 $sql = mysqli_query($mydb,$query );
 $return= array();
 while($row = mysqli_fetch_assoc($sql)){
-	$return[] = $row['Terminal'];
+	$return[] = $row;
 }
 asort($return);
 
 
-$query2 ="SELECT DISTINCT `nr_presetei` FROM `table_nr_presetei` ORDER BY `nr_presetei`";
+$query2 ="SELECT * FROM `table_nr_presetei` ORDER BY `nr_presetei`";
 $sql2 = mysqli_query($mydb,$query2);
 $return2 = array();
 while($row2 = mysqli_fetch_assoc($sql2)){
- 	 $return2[]= $row2['nr_presetei'];
+ 	 $return2[]= $row2;
 }
 
 
-$query1 = "SELECT DISTINCT `nr_mini` FROM `table_nr_mini` ORDER BY nr_mini";
+$query1 = "SELECT * FROM `table_nr_mini` ORDER BY nr_mini";
 $sql1 = mysqli_query($mydb,$query1);
 $return1 = array();
 while($row1 = mysqli_fetch_assoc($sql1)){
- 	$return1[] = $row1['nr_mini'];
+ 	$return1[] = $row1;
 }	
 
 
-$query3 = "SELECT DISTINCT `sez` FROM `table_sez`";
+$query3 = "SELECT * FROM `table_sez`";
 $sql3 = mysqli_query($mydb,$query3);
 $return3 = array();
 while($row3 = mysqli_fetch_assoc($sql3)){
-	$return3[] = $row3['sez'];
+	$return3[] = $row3;
 }
 asort($return3);
 
@@ -68,7 +68,7 @@ asort($return3);
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return as $resault){
-									echo"<option value=".$resault.">".$resault."</option>";
+									echo"<option value=".$resault['ID'].">".$resault['Terminal']."</option>";
 								}
 							?>
 						</select>
@@ -79,7 +79,7 @@ asort($return3);
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return2 as $resault){
-									echo"<option value=".$resault.">".$resault."</option>";
+									echo"<option value=".$resault['id'].">".$resault['nr_presetei']."</option>";
 								}
 							?>
 						</select>
@@ -90,7 +90,7 @@ asort($return3);
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return1 as $resault){
-									echo"<option value=".$resault.">".$resault."</option>";
+									echo"<option value=".$resault['id'].">".$resault['nr_mini']."</option>";
 								}
 							?>
 						</select>
@@ -101,7 +101,7 @@ asort($return3);
 					    	<option value="" selected disabled ></option>
 						    <?php
 								foreach($return3 as $resault){
-									echo"<option value=".$resault.">".$resault."</option>";
+									echo"<option value=".$resault['id'].">".$resault['sez']."</option>";
 								}
 							?>
 						</select>

@@ -1,6 +1,7 @@
 <?php
 require 'my_db.php';
 $get_data = $_GET;
+var_dump($get_data);
 $query = "SELECT *
           FROM `terminal_proprietes`
           WHERE id_primary = '".$get_data['id_']."'";
@@ -9,29 +10,34 @@ $updated_table  = mysqli_fetch_assoc($data_table);
  
 
 
-$query = "SELECT * FROM `table_terminal` 
-          WHERE ID ='".$updated_table['id_terminal']."'";
+$query = "SELECT * FROM `table_terminal`";
 $sql =  mysqli_query($mydb,$query);
-$terminal = mysqli_fetch_assoc($sql);
+$terminals=[];
+while($row = mysqli_fetch_assoc($sql)){
+	$terminals[] = $row;
+}
  
 
 
-$query = "SELECT * FROM `table_nr_presetei` 
-          WHERE id ='".$updated_table['id_nr_presetei']."'";
+$query = "SELECT * FROM `table_nr_presetei`";
 $sql =  mysqli_query($mydb,$query);
-$nr_presetei = mysqli_fetch_assoc($sql);
+while($row1 = mysqli_fetch_assoc($sql)){
+	$nr_presetele[] =$row1;
+}
 
 
-$query = "SELECT * FROM `table_nr_mini` 
-          WHERE id ='".$updated_table['id_nr_mini']."'";
+$query = "SELECT * FROM `table_nr_mini`";
 $sql =  mysqli_query($mydb,$query);
-$nr_mini = mysqli_fetch_assoc($sql);
+while( $row2 = mysqli_fetch_assoc($sql)){
+	$miniapl[] = $row2;
+}
 
 
-$query = "SELECT * FROM `table_sez` 
-          WHERE id ='".$updated_table['id_sez']."'";
+$query = "SELECT * FROM `table_sez` ";
 $sql =  mysqli_query($mydb,$query);
-$sez = mysqli_fetch_assoc($sql);
+while($row3 = mysqli_fetch_assoc($sql)){
+	$sezs[] = $row3;
+}
 
 
 ?>
@@ -47,42 +53,62 @@ require 'heders.php';
 <body>
 	<br>
 	<br>
-	<br>
+
 
 	<div class="col-xs-6 col-xs-offset-3">
-		<form action="/insert_to_table_bd_updated_date.php" method="post">
-			<div class="input-group">
-  				<span class="input-group-addon" id="basic-addon1">Terminal</span>
-  				<input name="udated_terminal" type="text" value ="<?php echo $terminal['Terminal']?>" class="form-control" aria-describedby="basic-addon1">
+		<form action="/insert_to_table_bd_updated_date.php?id=<?php echo $get_data['id_'] ?>" method="post">
+			<div class="form-group">
+				<label for="sel1">Terminal:</label>
+				<select name="terminal"value="terminal" class="form-control" id="sel1">
+					<?php
+					foreach( $terminals as $one_terminal	){
+						echo"<option value=".$one_terminal['ID']." ". ($updated_table['id_terminal']==$one_terminal['ID'] ? "selected='selected'" : "" ).">".$one_terminal['Terminal']."</option>";
+					}
+					?>
+				</select>
 			</div>
-<br>
+			<div class="form-group">
+				<label for="sel1">Preseta nr</label>
+				<select name="preseta"value="terminal" class="form-control" id="sel1">
+					<?php
+					foreach( $nr_presetele as $one_nr_presetei	){
+						echo"<option value=". $one_nr_presetei['id']." ". ($updated_table['id_nr_presetei']== $one_nr_presetei['id'] ? "selected='selected'" : "" ).">". $one_nr_presetei['nr_presetei']."</option>";
+					}
+					?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="sel1">Mini</label>
+				<select name="mini"value="terminal" class="form-control" id="sel1">
+					<?php
 
+					foreach( $miniapl as $one_nr_mini	){
+						echo"<option value=". $one_nr_mini['id']." ". ($updated_table['id_nr_mini'] == $one_nr_mini['id'] ? "selected='selected'" : "" ).">". $one_nr_mini['nr_mini']."</option>";
+					}
+					?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="sel1">Sez</label>
+				<select name="sez"value="terminal" class="form-control" id="sel1">
+					<?php
+
+					foreach( $sezs as $one_sez	){
+						echo"<option value=". $one_sez['id']." ". ($updated_table['id_sez'] == $one_sez['id'] ? "selected='selected'" : "" ).">". $one_sez['sez']."</option>";
+					}
+					?>
+				</select>
+			</div>
 			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">Preseta nr</span>
-				<input name="updated_nr_preseta" type="text" value="<?php echo $nr_presetei['nr_presetei']?>" class="form-control"  aria-describedby="basic-addon1">
-			</div>
-<br>
-		
+						   <span class="input-group-addon" id="basic-addon1">Calibrarea sus</span>
+						   <input name="updated_calibrarea_sus" type="text" value="<?php echo $updated_table['calibrarea_sus']?>" class="form-control"  aria-describedby="basic-addon1">
+						</div>
+			<br>
 			<div class="input-group">
-			   <span class="input-group-addon" id="basic-addon1">Mini</span>
-			   <input name="updated_nr_mini" type="text" value="<?php echo $nr_mini['nr_mini'] ?>" class="form-control"  aria-describedby="basic-addon1">
-            </div>
-<br>
-			<div class="input-group">
-			   <span class="input-group-addon" id="basic-addon1">Sez</span>
-			   <input name="updated_sez" type="text" value="<?php echo $sez['sez']?>" class="form-control"  aria-describedby="basic-addon1">
-			</div>
-<br>
-<div class="input-group">
-			   <span class="input-group-addon" id="basic-addon1">Calibrarea sus</span>
-			   <input name="updated_calibrarea_sus" type="text" value="<?php echo $updated_table['calibrarea_sus']?>" class="form-control"  aria-describedby="basic-addon1">
-			</div>
-<br>
-<div class="input-group">
-			   <span class="input-group-addon" id="basic-addon1">Calibrarea jos</span>
-			   <input name="updated_calibrarea_jos" type="text" value="<?php echo $updated_table['calibrarea_jos']?>" class="form-control"  aria-describedby="basic-addon1">
-			</div>
-<br>
+						   <span class="input-group-addon" id="basic-addon1">Calibrarea jos</span>
+						   <input name="updated_calibrarea_jos" type="text" value="<?php echo $updated_table['calibrarea_jos']?>" class="form-control"  aria-describedby="basic-addon1">
+						</div>
+			<br>
 		    <button class="btn btn-primary " type="submit" name="submit_updated_date">Отправить</button>
 	    </form>
     </div>
