@@ -7,26 +7,30 @@ $errors2 = array();
 	//	echo(strlen($data["pass_1"]));
 
 		if($data["log_1"] == ""){
-			$errors[] = "Введите логин !";
+			$errors[] = "Introduceti login !";
 		}elseif( strlen($data["log_1"]) < '5' ){
-			$errors[] = "Введённый логин слишком кароткий !";
+			$errors[] = "Loginul introdus este pre scurt !";
 		}
+			
+			$_SESSION['current_user'] = $data["log_1"];
+		
 		if($data["pass_1"] == ""){
-			$errors[] = "Введите пароль!";
+			$errors[] = "Introduceti parola!";
 		}elseif( strlen($data["pass_1"]) < '5' ){
-			$errors[] = "Введён слишком кароткий  пароль !";
+			$errors[] = "Parola introdusa este pre scurta !";
 		}
 		if(empty($errors)){
 			$query = "SELECT users.login FROM users WHERE login ='".$data["log_1"]. "'";
 			$user = mysqli_query($mydb,$query);
 			$row = mysqli_fetch_assoc($user);
 			if(isset($row)){
+
 				global $errors;
-				$errors[] =" Пользователь с таким логином уже зарегистрирован !";
+				$errors[] =" Utilizator cu asa login este inregistrat !";
 			}else{
 				mysqli_query($mydb,
 				" INSERT INTO `users` (`login`,`password`) VALUES ('".$data['log_1'] ."','".$data['pass_1'] ."')" );
-				$errors2[] = "Вы успешно зарегистрированы ";
+				$errors2[] = "Ați înregistrat cu succes ";
 			}
 		}else{
 //		echo '<div style="color: red;">'.var_dump($errors).'</div>';
@@ -39,13 +43,13 @@ $errors2 = array();
 	//	$errors = array();
 		if($data["log_2"] == ""){
 			
-			$errors[] = "Введите логин !";
+			$errors[] = "Introduceti login !";
 		}elseif($data["pass_2"] == ""){
 			
-			$errors[] = "Введите пароль !";
+			$errors[] = "Introduceti parola !";
 		}if( strlen($data["pass_2"]) < '5' ){
 			
-			$errors[] = "Введён слишком кароткий  пароль !";
+			$errors[] = "parola introdusa este prea scurta !";
 		}
 		if(empty($errors)){
 			$query = "SELECT users.login, users.password FROM users WHERE login ='".$data["log_2"]. "' AND password ='".$data["pass_2"]. "'";
@@ -55,14 +59,11 @@ $errors2 = array();
 				$_SESSION['logged_user'] = $row;
 				header('Location: option.php');
 			}else{
-				 $errors2[] = "Вы ошиблись при заполнении формы !";
+				 $errors[] = "Nu casca gura !";
 			}
 		}
-//		if(!empty($errors)){ 
-//			echo '<div  style="color: red";>'.array_shift($errors).'</div>';
-//		}
+
     }
-//print_r($errors);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,7 +125,7 @@ $errors2 = array();
             console.log(rightBlock);
             rightBlock.append(div);
             setTimeout(function(){
-                $(div).slideUp( 1000 , function(){
+                $(div).slideUp( 1500 , function(){
                       $(div).remove();
                 });
 		    }, timeout);
@@ -168,14 +169,14 @@ $errors2 = array();
 		<div class="col-xs-4 col-xs-offset-4">
 			<form action="" method="post">
 				<div class="form-group">
-  					<label for="usr">Введите логин</label>
+  					<label for="usr">Introduceti loginul</label>
  					 <input type="text" name="log_1"class="form-control" id="usr">
 				</div>
 				<div class="form-group">
-  					<label for="usr">Введите пароль</label>
- 					 <input type="text" name="pass_1" class="form-control" id="usr">
+  					<label for="usr">Introduceti parola</label>
+ 					 <input type="password" name="pass_1" class="form-control" id="usr">
 				</div>	
-				<button class=" btn btn-success " type="submit" name="btn_reg">Отправить</button>
+				<button class=" btn btn-success " type="submit" name="btn_reg">Submit</button>
 			</form>
 		</div>
 	</div>
@@ -183,18 +184,18 @@ $errors2 = array();
 		<div class="col-xs-4 col-xs-offset-4">
 			<form action="" method="post">
 				<div class="form-group">
-					<label for="usr">Введите логин</label>
+					<label for="usr">Introducrti login</label>
 					 <input type="text" name="log_2" class="form-control" id="usr">
 				</div>	
 				<div class="form-group">
-					<label for="usr">Введите пароль</label>
-					 <input type="text" name="pass_2" class="form-control" id="usr">
+					<label for="usr">Introduceti parola</label>
+					 <input type="password" name="pass_2" class="form-control" id="usr">
 				</div>	
 				<!-- <label for="log_2">Введите логин</label>
 				<input type="text" name="log_2"><br>
 				<label for="pass_2">Введите пароль</label>
 				<input type="password" name="pass_2"><br> -->
-				<button class=" btn btn-primary " type="submit" name="btn_log">Войти в аккаунт</button>
+				<button class=" btn btn-primary " type="submit" name="btn_log">Intra</button>
 			</form>
 		</div>
 	</div>

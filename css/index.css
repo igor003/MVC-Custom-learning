@@ -120,11 +120,23 @@ a:hover{
 	color:white;
 	font-size: 13px;
 }
- .table th, .table td{
+ /*.table th, .table td{
 	text-align: center;
+	line-height:60px;
+	height:20px;
+	
+}*/
+.table>tbody>tr>td{
+	text-align: center;
+	line-height:33px;
+	height:20px;
 }
 .table th{
 	background-color:#b7b7b7;
+	text-align:center;
+}
+.tale tr{
+	height:10px;
 }
 .form{
 	margin:auto;

@@ -114,11 +114,11 @@ asort($return3);
 	  					<label for="usr">Calibrarea jos:</label>
 	 					 <input name="calibrarea_jos" type="text" class="form-control" id="usr">
 					</div>
-					<input class="btn  btn-warning" type="submit">
+					<button class="btn  btn-warning" type="submit">Submit</button>
 				</form>
 			</div>
 		</div>
 	</div>
 	
 </body>
-</html>
+</html>t

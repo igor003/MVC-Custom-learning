@@ -1,7 +1,6 @@
 <?php
 require 'my_db.php';
 $get_data = $_GET;
-var_dump($get_data);
 $query = "SELECT *
           FROM `terminal_proprietes`
           WHERE id_primary = '".$get_data['id_']."'";
@@ -12,7 +11,7 @@ $updated_table  = mysqli_fetch_assoc($data_table);
 
 $query = "SELECT * FROM `table_terminal`";
 $sql =  mysqli_query($mydb,$query);
-$terminals=[];
+$terminals=array();
 while($row = mysqli_fetch_assoc($sql)){
 	$terminals[] = $row;
 }
@@ -51,10 +50,19 @@ require 'heders.php';
 	?>
 </head>
 <body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/add_terminal/add_terminal_to_db.php">Adăuga terminal</a></li>
+        <li><a href="/add_nr_preseta/add_nr_presetei_to_db.php">Adăuga nr presetei</a></li>
+        <li><a href="/add_nr_mini/add_nr_mini_to_db.php">Adăuga nr mini</a></li>
+        <li><a href="/add_sez/add_sez_to_db.php">Adăuga sez</a></li>
+	  </ul>
+	</div>
+  </div>
+</nav>
 	<br>
-	<br>
-
-
 	<div class="col-xs-6 col-xs-offset-3">
 		<form action="/insert_to_table_bd_updated_date.php?id=<?php echo $get_data['id_'] ?>" method="post">
 			<div class="form-group">

@@ -19,7 +19,7 @@ require '../my_db.php';
                     <label for="usr">Terminal:</label>
                     <input name="new_terminal" type="text" class="form-control" id="usr">
                 </div>
-                <input class="btn btn-success" type="submit">
+                <button class="btn btn-success" type="submit">Submit</button>
             </form>
         </div>
     </div>

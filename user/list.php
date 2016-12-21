@@ -58,11 +58,11 @@ function select($id,$row2,$row3){
 	<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-<a href="insert.php"><button class="btn btn-success">Добавить пользователя</button></a>
-<a href="../option.php"<button class="btn btn-warning">На главную</button></a>
+<a href="insert.php"><button class="btn btn-success">Adauga utilizator</button></a>
+<a href="../option.php"<button class="btn btn-warning">Pagina principala</button></a>
  	<div class="table-responsive"> 
     <table class="table table-bordered">
-		<caption><h1>Таблица данных о пользователях</h1></caption>
+		<caption><h1>Utilizatori</h1></caption>
 		<tr>
 		<th>ID</th>
 		<th>Login</th>

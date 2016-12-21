@@ -19,7 +19,7 @@ require '../my_db.php';
                     <label for="usr">Sez:</label>
                     <input name="new_sez" type="text" class="form-control" id="usr">
                 </div>
-                <input class="btn btn-success" type="submit">
+                <button class="btn btn-success" type="submit">Submit</button>
             </form>
         </div>
     </div>

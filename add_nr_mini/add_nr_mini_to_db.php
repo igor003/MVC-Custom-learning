@@ -16,7 +16,7 @@
                     <label for="usr">Nr miniaplicatorului:</label>
                     <input name="new_nr_mini" type="text" class="form-control" id="usr">
                 </div>
-                <input class="btn btn-success" type="submit">
+                <button class="btn btn-success" type="submit">Submit</button>
             </form>
         </div>
     </div>

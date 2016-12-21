@@ -9,6 +9,8 @@ while($row = mysqli_fetch_assoc($sql)){
 asort($return);
 
 
+
+
 $query1 = "SELECT DISTINCT `nr_mini` FROM `table_nr_mini` ORDER BY nr_mini;";
 $sql1 = mysqli_query($mydb,$query1);
 $return1 = array();
@@ -29,6 +31,8 @@ while($row2 = mysqli_fetch_assoc($sql2)){
 
 
 
+
+
 $query3 = "SELECT DISTINCT `sez` FROM `table_sez`;";
 $sql3 = mysqli_query($mydb,$query3);
 $return3 = array();
@@ -36,6 +40,7 @@ while($row3 = mysqli_fetch_assoc($sql3)){
 	$return3[] = $row3['sez'];
 }
 asort($return3);
+
 
 
 
@@ -53,12 +58,13 @@ $query = "SELECT tp.calibrarea_sus , tp.calibrarea_jos
 $calibrarea = mysqli_query($mydb,$query);
 $b = mysqli_fetch_assoc($calibrarea);
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>'
+	<title>Document</title>
 	<?php
 	require"/heders.php";
 	?>
@@ -67,86 +73,104 @@ $b = mysqli_fetch_assoc($calibrarea);
 			$(".result_2").show;
 		})
 	</script>
+	<style>
+		.noroc{
+			position:absolute;
+			right:100px;
+			color:green;
+			font-style:Arial;
+		}
+	</style>
 </head>
 <body>
-<a href="../user/list.php">
-	<button class="btn btn-success">
-		 Пользователи
-	</button>
-</a>
-<a href="/database_table.php">
-	<button class="btn btn-info">
-		База данных
-	</button>
-</a>
-<div class="form">
-	<form action="" method="post">
-		<div class="form-group">
-			<label for="sel1">Terminal:</label>
-		    <select name="terminal"value="terminal" class="form-control" id="sel1">
-		    	<option value="" selected disabled ></option>
-			    <?php
-					foreach($return as $resault){
-						echo"<option value=".$resault.">".$resault."</option>";
-					}
-				?>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="sel2">Mini:</label>
-		    <select name="mini"class="form-control" id="sel2">
-		    	<option value="" selected disabled ></option>
-			    <?php
-					foreach($return1 as $resault){
-						echo"<option value=".$resault.">".$resault."</option>";
-					}
-				?>
-			</select>
-		</div>
 	
-		<div class="form-group">
-			<label for="sel3">Preseta nr:</label>
-		    <select name="nr_presetei"class="form-control" id="sel3">
-		    	<option value="" selected disabled ></option>
-			    <?php
-					foreach($return2 as $resault){
-						echo"<option value=".$resault.">".$resault."</option>";
-					}
-				?>
-			</select>
-		</div>
-		<div class="form-group">
-			<label for="sel4">Sez:</label>
-		    <select name="sez"class="form-control" id="sel4">
-		    	<option value="" selected disabled ></option>
-			    <?php
-					foreach($return3 as $resault){
-						echo"<option value=".$resault.">".$resault."</option>";
-					}
-				?>
-			</select>
-		</div>
-	<button class="btn btn-primary " type="submit" name="submit_option">Отправить</button>
-</form>
+	<div class="noroc">
+		<h4>
+			Noroc <?php echo($_SESSION['logged_user']['login'])?>
+		</h4>
+	</div>
+	<br>
+	
+
+	<a href="user/list.php">
+		<button class="btn btn-success">		 
+	    	Utilizatori
+		</button>
+	</a>
+	<a href="/database_table.php">
+		<button class="btn btn-info">	
+			Bază de date
+		</button>
+	</a>
+	<div class="form">
+		<form action="" method="post">
+			<div class="form-group">
+				<label for="sel1">Terminal:</label>
+			    <select name="terminal"value="terminal" class="form-control" id="sel1">
+			    	<option value="" selected disabled ></option>
+				    <?php
+						foreach($return as $resault){
+							echo"<option value=".$resault.">".$resault."</option>";
+						}
+					?>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="sel2">Mini:</label>
+			    <select name="mini"class="form-control" id="sel2">
+			    	<option value="" selected disabled ></option>
+				    <?php
+						foreach($return1 as $resault){
+							echo"<option value=".$resault.">".$resault."</option>";
+						}
+					?>
+				</select>
+			</div>
+		
+			<div class="form-group">
+				<label for="sel3">Preseta nr:</label>
+			    <select name="nr_presetei"class="form-control" id="sel3">
+			    	<option value="" selected disabled ></option>
+				    <?php
+						foreach($return2 as $resault){
+							echo"<option value=".$resault.">".$resault."</option>";
+						}
+					?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="sel4">Sez:</label>
+			    <select name="sez"class="form-control" id="sel4">
+			    	<option value="" selected disabled ></option>
+				    <?php
+						foreach($return3 as $resault){
+							echo"<option value=".$resault.">".$resault."</option>";
+						}
+					?>
+				</select>
+			</div>
+			<button class="btn btn-primary " type="submit" name="submit_option">A depune</button>
+		</form>
+	</div>
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	if($b){
+?>
+<div class="result">
+	Calibrarea sus: <?=$b['calibrarea_sus']?>
+	Calibrarea jos: <?=$b['calibrarea_jos']?>
 </div>
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST") {
-	if ($b) {
-		?>
-		<div class="result">
-			Calibrarea sus: <?= $b['calibrarea_sus'] ?>
-			Calibrarea jos: <?= $b['calibrarea_jos'] ?>
-		</div>
-		<?php
-	} else {
-		?>
-		<div class="result_2">
-			Форма заполнена неверно!!!
-		</div>
-		<?php
+	}else{
+?>
+	<div class="result_2">
+		Nu casca gura!!!
+	</div>
+<?php
 	}
 }
+
 ?>
 </body>
 </html>

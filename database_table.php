@@ -18,7 +18,7 @@ while($row = mysqli_fetch_assoc($user)){
 		               $row['sez'],
 		               $row['calibrarea_sus'],
 	                   $row['calibrarea_jos']);
-}
+};
 
 function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 	return "
@@ -40,12 +40,14 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 		</tr>
 	";
 	
-}
+};
 
-
-//		$user = mysqli_query($mydb,$query2);
+$search = $_POST['search'];
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,16 +78,35 @@ function select($id,$row2,$row3,$row4,$row5,$row6,$row7){
 		.del{
 			margin-right:12px;
 		}
+		.search{
+			/*position:absolute;
+			top:10px;
+			right:140px;*/
+		}
 		
 	</style>
 </head>
 <body>
+	<div class="row search">
+		<div class="col-xs-4">
+			<a href="/option.php"<button class="btn btn-warning btn-md"><span class="glyphicon glyphicon-arrow-left"></span></button></a>
+			<a href="/add_to_db.php"><button class='btn btn-warnung'>Adăuga înregistrare </button></a>
+		</div>
+		<div class="col-xs-4 col-xs-offset-4">
 
-<a href="/option.php"<button class="btn btn-warning">На главную</button></a>
-<a href="/add_to_db.php"><button class='btn btn-warnung'>Добавить запись </button></a>
+			<form method="post" action="search.php" class="navbar-form navbar-left">
+		        <div class="form-group">
+		          <input name="search" type="text" class="form-control" placeholder="Search terminal">
+		        </div>
+		        <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+
+
  	<div class="table-responsive"> 
     <table class="table table-bordered">
-		<caption><h1>База данных</h1></caption>
+		<caption><h1>Bază de date</h1></caption>
 		<tr>
 		<th>ID</th>
 		<th>Terminal</th>
